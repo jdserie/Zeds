@@ -10,7 +10,7 @@ def normal():
           'Bob: You and I have to get to the CDC safe zone on the other side of the city.\n\n'
           )
     print(username + ": lets go down town!\n" +
-              "Bob: Alright, Let's!\n\n")
+              "Bob: Alright, let's!\n\n")
     choice_2 = input('Bob: Should we go to the rooftops[1] or avoid parkour and take the Zed infested streets[2]?')
     if choice_2 == '1':
             print(username + ': Lets parkour across the rooftops!' +
@@ -24,22 +24,21 @@ def normal():
                         "Bob's as bait was worth it!\n" + username + " survived!"
                       )
                 exit()
-            elif choice == '2':
+            elif choice_4 == '2':
                 print('Narrator: The duo climbed down a fire ladder quietly.\nThey ran safeley to the Safe Zone!\n\n' +
-                        userename + ' and Bob both survived')
+                        username + ' and Bob both survived!')
                 exit()
-            elif choice_2 == '2':
-                print(username + ': Go down the roads! It is faster.\n\n')
-            choice_3 = input('Bob: should we take that running car[1] or try to out run them?[2]')
-            if choice_3 == '1':
-                print('Narrator: The two ignored a rule from ZombieLand: "Check the backseat."\n' +
+    elif choice_2 == '2':
+        print(username + ': Go down the roads! It is faster.\n\n')
+        choice_3 = input('Bob: should we take that running car[1] or try to out run them?[2]')
+        if choice_3 == '1':
+            print('Narrator: The two ignored a rule from ZombieLand: "Check the backseat."\n' +
                           'There was a Zed back there.\nYou both died...')
-                exit()
-            elif choice_3 == '2':
-                print('Narrator: There was way to many Zeds down that road...\nYou died.')
-                exit()
-    else:
-        exit()
+            exit()
+        elif choice_3 == '2':
+            print('Narrator: There was way to many Zeds down that road...\nYou died.')
+            exit()
+
 
 
 
