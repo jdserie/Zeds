@@ -1,6 +1,6 @@
 menu
-1) short
-2) normal
+1) short -> no boss
+2) normal -> loop final boss
 3) exit
 
 conditionals

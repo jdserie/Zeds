@@ -4,29 +4,31 @@ import os
 
 # CODE FOR GAME
 def normal():
-
+    print('cat')
 
 # TODO: fill normal
 
 # CODE CUT
-def easy():
-
+def short():
+    pass
 
 # TODO: fill easy
 
 
 def menu():
-    print("Gamemode:\n" +
+    print("Game Mode:\n" +
           "1) Short\n" +
           "2) Normal\n" +
           "3) Exit\n")
 
 
-def make_choice(option):
+def menu_make_choice(option):
     if option == "1":
+        input("*Start Game*")
         easy()
 
     elif option == "2":
+        input("*Start Game*")
         normal()
 
     elif option == "3":
@@ -35,7 +37,10 @@ def make_choice(option):
     else:
         print('Syntax Error\n')
 
-
+'''
+def endgame():
+    print('Game Over')
+'''
 
 while True:
     os.system('cls||clear')
@@ -44,6 +49,8 @@ while True:
 
     option = input("\n>")
 
-    make_choice(option)
+    menu_make_choice(option)
 
-    input("*Start Game*")
+ #   endgame()
+
+
