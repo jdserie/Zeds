@@ -14,8 +14,17 @@ def normal():
         print(username + ": lets go down town!\n" +
               "Bob: Alright, Let's!\n\n" +
               'Bob: Should we go to the rooftops[1] or avoid parkour and take the Zed infested streets[2]\n\n')
-        
-              if choice_2 = input('')
+        choice_2 = input('')
+        if choice_2 == '1':
+            print(username + ': Lets parkour across the rooftops!' +
+                  'Narrator: After much parkouring,\n the duo reaches the end of the buildings\n with a low drop to the ground infront of them to a feild\n with the safe zone in sight.\n\n')
+                  choice_4 = input('Feeling confident, do they decide to jump down quickly[1] or climb down the building?[2]')
+            if choice_4 == '1':
+                print('Narrator: The two jumped down landing on a loud bag of cans, allerting the Zeds nearby\n' +
+                      'Bob: I BROKE MY LEG HELP ME UP!!!\n' +
+                      username + ' noticed the Zeds approaching and left Bob and ran across the feild safely to the safe zone.'
+                      )
+
 
 
         
