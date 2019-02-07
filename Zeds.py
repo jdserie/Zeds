@@ -10,7 +10,14 @@ def normal():
           'Bob: You and I have to get to the CDC safe zone on the other side of the city.\n\n'
           )
     choice_1 = input('Should we go down town[1] or through the suburbs[2]?')
-    if input == '1':
+    if choice_1 == '1':
+        print(username + ": lets go down town!\n" +
+              "Bob: Alright, Let's!\n\n" +
+              'Bob: Should we go to the rooftops[1] or avoid parkour and take the Zed infested streets[2]\n\n')
+        
+              if choice_2 = input('')
+
+
         
 
 
