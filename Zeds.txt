@@ -1,3 +1,18 @@
-fish tacos
+menu
+1) short
+2) normal
+3) exit
 
-This is my test push
+conditionals
+-choices (hide, fight, run)
+
+input
+-name
+-choosing conditionals
+
+function
+-[ hide , fight , run , error/redo]
+
+loops
+-maze ---can lead to death or life, with counter
+-3 strikes (TOO MUCH NOISE! HORDE HAAS FOUND YOU!)
