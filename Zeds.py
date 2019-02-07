@@ -13,7 +13,7 @@ def normal():
               "Bob: Alright, let's!\n\n")
     choice_2 = input('Bob: Should we go to the rooftops[1] or avoid parkour and take the Zed infested streets[2]?')
     if choice_2 == '1':
-            print(username + ': Lets parkour across the rooftops!' +
+            print(username + ': Lets parkour across the rooftops!\n' +
                   'Narrator: After much parkouring,\n the duo reaches the end of the buildings\n with a low drop to the ground in front of them to a feild\n with the safe zone in sight.\n\n')
             choice_4 = input('Feeling confident, do they decide to jump down quickly[1] or climb down the building?[2]')
             if choice_4 == '1':
@@ -21,7 +21,7 @@ def normal():
                       'Bob: I BROKE MY LEG HELP ME UP!!!\n' +
                       'Narrator: ' + username + ' noticed the Zeds approaching fast and left Bob as bait\n.' +
                         'and ran across the field safely to the Safe Zone.\n\n' +
-                        "Bob's as bait was worth it!\n" + username + " survived!"
+                        "Bob's use as bait was worth it!\n" + username + " survived!"
                       )
                 exit()
             elif choice_4 == '2':
