@@ -4,7 +4,19 @@ import os
 
 # CODE FOR GAME
 def normal():
-    print('cat')
+    username = input('What is your name?\n')
+    print('Bob: Hello, ' + username + '!\n' +
+          'The Zeds Virus is spreading rapidly!\n' +
+          'Bob: You and I have to get to the CDC safe zone on the other side of the city.\n\n'
+          )
+    choice_1 = input('Should we go down town[1] or through the suburbs[2]?')
+    if input == '1':
+        
+
+
+
+
+
 
 # TODO: fill normal
 
