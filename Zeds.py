@@ -1,100 +1,72 @@
-
-import os
-# UI MENU
-
-# CODE FOR GAME
-def normal():
-    username = input('What is your name?\n')
-    print('Bob: Hello, ' + username + '!\n' +
-          'The Zeds Virus is spreading rapidly!\n' +
-          'Bob: You and I have to get to the CDC safe zone on the other side of the city.\n\n'
-          )
-    print(username + ": lets go down town!\n" +
-              "Bob: Alright, let's!\n\n")
-    choice_2 = input('Bob: Should we go to the rooftops[1] or avoid parkour and take the Zed infested streets[2]?')
-    if choice_2 == '1':
-            print(username + ': Lets parkour across the rooftops!\n' +
-                  'Narrator: After much parkouring,\n the duo reaches the end of the buildings\n with a low drop to the ground in front of them to a field\n with the safe zone in sight.\n\n')
-            choice_4 = input('Feeling confident, do they decide to jump down quickly[1] or climb down the building?[2]')
-            if choice_4 == '1':
-                print('Narrator: The two jumped down landing on a loud bag of cans, alerting the Zeds nearby\n' +
-                      'Bob: I BROKE MY LEG HELP ME UP!!!\n' +
-                      'Narrator: ' + username + ' noticed the Zeds approaching fast and left Bob as bait.\n' +
-                        'and ran across the field safely to the Safe Zone.\n\n' +
-                        "Bob's use as bait was worth it!\n" + username + " survived!"
-                      )
-                exit()
-            elif choice_4 == '2':
-                print('Narrator: The duo climbed down a fire ladder quietly.\nThey ran safeley to the Safe Zone!\n\n' +
-                        username + ' and Bob both survived!')
-                exit()
-    elif choice_2 == '2':
-        print(username + ': Go down the roads! It is faster.\n\n')
-        choice_3 = input('Bob: should we take that running car[1] or try to out run them?[2]')
-        if choice_3 == '1':
-            print('Narrator: The two ignored a rule from ZombieLand: "Check the backseat."\n' +
-                          'There was a Zed back there.\nYou both died...')
-            exit()
-        elif choice_3 == '2':
-            print('Narrator: There was way to many Zeds down that road...\nYou died.')
-            exit()
+"""Play Zeds, a branching survival story, in a terminal or desktop window."""
+import argparse
+from dataclasses import dataclass
 
 
+@dataclass(frozen=True)
+class Scene:
+    title: str
+    text: str
+    choices: tuple[tuple[str, str], ...] = ()
 
 
+SCENES = {
+    'start': Scene('The outbreak', '{player}, the city is falling. Bob needs your help crossing downtown to the CDC safe zone.', (
+        ('Cross the rooftops', 'roof'),
+        ('Take the streets', 'road'),
+    )),
+    'roof': Scene('The last rooftop', 'You and Bob can see the safe zone. The street below looks quiet.', (
+        ('Jump down', 'jump'),
+        ('Climb down the fire ladder', 'ladder'),
+    )),
+    'road': Scene('An abandoned car', 'The engine is running. A crowd of Zeds is closing in.', (
+        ('Take the car', 'car'),
+        ('Run for the safe zone', 'run'),
+    )),
+    'jump': Scene('One survivor', 'The jump alerts the Zeds and Bob breaks his leg. {player} reaches the safe zone alone.'),
+    'ladder': Scene('Both survived', 'You and Bob climb down quietly and make it across the field together.'),
+    'car': Scene('Dead end', 'A Zed is hiding in the backseat. Neither of you reaches the safe zone.'),
+    'run': Scene('Overrun', 'There are too many Zeds in the street. The safe zone is out of reach.'),
+}
 
 
+def scene_text(scene, player):
+    return scene.text.format(player=player.strip() or 'Survivor')
 
 
+def play_terminal():
+    player = input('Your name: ')
+    scene = SCENES['start']
+    while True:
+        print(f'\n{scene.title}\n{scene_text(scene, player)}')
+        if not scene.choices:
+            if input('Play again? [y/N] ').strip().lower() != 'y':
+                return
+            scene = SCENES['start']
+            continue
+        for number, (label, _) in enumerate(scene.choices, 1):
+            print(f'{number}. {label}')
+        choice = input('Choose 1 or 2: ').strip()
+        if choice in ('1', '2'):
+            scene = SCENES[scene.choices[int(choice) - 1][1]]
+        else:
+            print('Choose one of the listed routes.')
 
 
-        
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument('--gui', action='store_true', help='Open the graphical edition.')
+    args = parser.parse_args()
+    try:
+        if args.gui:
+            from graphical import play_graphical
+            play_graphical(SCENES, scene_text)
+        else:
+            print('== ZEDS ==')
+            play_terminal()
+    except (EOFError, KeyboardInterrupt):
+        print('\nRun ended.')
 
 
-
-
-
-
-# TODO: fill normal
-
-# CODE CUT
-def short():
-    pass
-
-# TODO: fill easy
-
-
-def menu():
-    print("Game Mode:\n" +
-          "1) Normal\n" +
-          "2) Exit\n")
-
-
-def menu_make_choice(option):
-    if option == "1":
-        input("*Start Game*")
-        normal()
-
-    elif option == "2":
-        exit()
-
-    else:
-        print('Syntax Error\n')
-
-'''
-def endgame():
-    print('Game Over')
-'''
-
-while True:
-    os.system('cls||clear')
-
-    menu()
-
-    option = input("\n>")
-
-    menu_make_choice(option)
-
- #   endgame()
-
-
+if __name__ == '__main__':
+    main()
